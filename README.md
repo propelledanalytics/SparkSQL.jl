@@ -91,7 +91,7 @@ Delta Lake is an open-source storage layer for Spark. Delta Lake offers:
 - ACID transactions on Spark: Serializable isolation levels ensure that readers never see inconsistent data.
 - Scalable metadata handling: Leverages Spark’s distributed processing power to handle all the metadata for petabyte-scale tables with billions of files.
 
-Example shows create table (DDL), insert (DML) and select (SQL) statements using Delta Lake and SparkSQL:
+Example shows create table (DDL) statements using Delta Lake and SparkSQL:
 ```
 sql(session, "CREATE DATABASE demo;")
 sql(session, "USE demo;")
