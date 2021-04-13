@@ -1,0 +1,12 @@
+name = "SparkSQL"
+uuid = "4860efcf-db82-4443-af70-6b708dedc2d2"
+version = "1.0.8"
+
+[deps]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+Decimals = "abce61dc-4473-55a0-ba07-351d65e31d42"
+JavaCall = "494afd89-becb-516b-aafa-70d2670c0337"
+
+[compat]
+julia = "1.6"
