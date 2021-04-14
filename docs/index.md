@@ -16,15 +16,15 @@ The SparkSQL.jl package uses the Dataset APIs internally giving Julia users the 
 This package is for structured and semi-structured data in Data Lakes, Lakehouses (Delta Lake) on premise and in the cloud.
 
 # Available Functions
-Use ? to see help for each function.
-- `initJVM`: initializes the Java Virtual Machine (JVM) in Julia.
-- `SparkSession`: submits application to Apache Spark cluster with config options.
-- `sql`: function to submit SQL, DDL, and DML statements to Spark.
-- `cache`: function to cache Spark Dataset into memory.
-- `createOrReplaceTempView`: creates temporary view that lasts the duration of the session.
-- `createGlobalTempView`: creates temporary view that lasts the duration of the application.
-- `toJuliaDF`: move Spark data into a Julia DataFrame.
-- `toSparkDS`: move Julia DataFrame data to a Spark Dataset.
+Use ? in the Julia REPL to see help for each function.
+- `initJVM`: initializes the Java Virtual Machine (JVM) in Julia. [Help file.](https://propelledanalytics.github.io/SparkSQL.jl/initJVM)
+- `SparkSession`: submits application to Apache Spark cluster with config options. [Help file.](https://propelledanalytics.github.io/SparkSQL.jl/sparksession)
+- `sql`: function to submit SQL, DDL, and DML statements to Spark. [Help file.](https://propelledanalytics.github.io/SparkSQL.jl/sql)
+- `cache`: function to cache Spark Dataset into memory. [Help file.](https://propelledanalytics.github.io/SparkSQL.jl/cache)
+- `createOrReplaceTempView`: creates temporary view that lasts the duration of the session. [Help file.](https://propelledanalytics.github.io/SparkSQL.jl/createOrReplaceTempView)
+- `createGlobalTempView`: creates temporary view that lasts the duration of the application. [Help file.](https://propelledanalytics.github.io/SparkSQL.jl/createGlobalTempView)
+- `toJuliaDF`: move Spark data into a Julia DataFrame. [Help file.](https://propelledanalytics.github.io/SparkSQL.jl/toJuliaDF)
+- `toSparkDS`: move Julia DataFrame data to a Spark Dataset. [Help file.](https://propelledanalytics.github.io/SparkSQL.jl/toSparkDS)
 
 
 # Quick Start
