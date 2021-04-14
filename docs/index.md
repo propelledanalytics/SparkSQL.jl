@@ -1,5 +1,5 @@
 # SparkSQL.jl
-https://github.com/propelledanalytics/SparkSQL.jl
+<https://github.com/propelledanalytics/SparkSQL.jl>
 
 Submits *Structured Query Language* (SQL), *Data Manipulation Language* (DML) and *Data Definition Language* (DDL) statements to Apache Spark.
 Has functions to move data from Spark into Julia DataFrames and Julia DataFrame data into Spark.
