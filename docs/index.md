@@ -1,6 +1,10 @@
 # SparkSQL.jl
+https://github.com/propelledanalytics/SparkSQL.jl
+
 Submits *Structured Query Language* (SQL), *Data Manipulation Language* (DML) and *Data Definition Language* (DDL) statements to Apache Spark.
 Has functions to move data from Spark into Julia DataFrames and Julia DataFrame data into Spark.
+
+
 
 ### Use Case
 Apache Spark is one of the world's most popular open source big data processing engines. Spark supports programming in Java, Scala, Python, SQL, and R.
