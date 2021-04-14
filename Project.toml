@@ -10,3 +10,6 @@ JavaCall = "494afd89-becb-516b-aafa-70d2670c0337"
 
 [compat]
 julia = "1.6"
+DataFrames = "0.22.7"
+Decimals = "0.4.1"
+JavaCall = "0.7.7"
