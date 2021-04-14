@@ -4,7 +4,7 @@ Submits application to Apache Spark cluster with config options.
 # Arguments
 - `master::String`: the URL to the Spark cluster master.
 - `appName::String`: the name of the application.
-- `config::Dict{String, String}()`: one or more config option for the SparkSession.
+- `config::Dict{String, String}()`: one or more config option for the SparkSession. (optional).
 
 # Examples
 Basic spark session:
