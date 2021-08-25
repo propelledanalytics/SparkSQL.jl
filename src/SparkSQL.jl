@@ -62,7 +62,7 @@ createOrReplaceTempView(sparkDataset, "tempTable")
 The Dataset is a delimited string. To generate columns use the SparkSQL "split" function.
 
 ```
-sqlQuery = sql(sparkSession, "Select split(value, ',' )[0] AS columnName1, split(value, ',' )[1] AS columnName2 from tempTable")
+sqlQuery = sql(sparkSession, "SELECT split(value, ',' )[0] AS columnName1, split(value, ',' )[1] AS columnName2 FROM tempTable")
 ```
 
 
@@ -107,7 +107,7 @@ using JavaCall
 using DataFrames
 using Decimals
 using Dates
-
+using ProgressMeter
 
 export initJVM, SparkSession, sql, cache, createOrReplaceTempView, createGlobalTempView, toJuliaDF, toSparkDS
 
@@ -212,9 +212,9 @@ spark = SparkSession("spark://example.com:7077", "Julia SparkSQL Example App")
 function SparkSession(master::String, appName::String)
 	print("Starting Spark Session")
 	builder = jcall(SparkSession,"builder", SparkSessionBuilder,())
-    	jcall(builder, "master", SparkSessionBuilder, (JString,), master)
-    	jcall(builder, "appName",SparkSessionBuilder, (JString,), appName)
-    session = jcall(builder, "getOrCreate", SparkSession, ())
+	jcall(builder, "master", SparkSessionBuilder, (JString,), master)
+	jcall(builder, "appName",SparkSessionBuilder, (JString,), appName)
+	session = jcall(builder, "getOrCreate", SparkSession, ())
 	return session::SparkSession
 end
 
@@ -246,8 +246,8 @@ spark = SparkSession("spark://example.com:7077", "Julia SparkSQL Example App", D
 function SparkSession(master::String, appName::String, config=Dict{key::String, value::String}())
 	print("Starting Spark Session")
 	builder = jcall(SparkSession,"builder", SparkSessionBuilder,())
-        jcall(builder, "master", SparkSessionBuilder, (JString,), master)
-        jcall(builder, "appName",SparkSessionBuilder, (JString,), appName)
+	jcall(builder, "master", SparkSessionBuilder, (JString,), master)
+	jcall(builder, "appName",SparkSessionBuilder, (JString,), appName)
 
 	for (key, value) in config
 		jcall(builder, "config", SparkSessionBuilder, (JString, JString), key, value)
@@ -387,7 +387,7 @@ function createDataFrame(ds::Dataset)
 	columns = Symbol.(unsafe_string.(map(column_name -> convert(JString, jcall(column_name, "_1", JObject, ())), schema)))
 	dataTypes = unsafe_string.(map(dtype -> convert(JString, jcall(dtype, "_2", JObject, ())), schema))
 	juliaDataTypes = map(sparkType -> toJuliaType[decimalFormat(sparkType)], dataTypes)
-	dataframe = DataFrame(juliaDataTypes, columns)
+	dataframe = DataFrame(columns .=> [type[] for type in juliaDataTypes])
 	return dataframe::DataFrame
 end
 
@@ -432,9 +432,12 @@ function toJuliaDF(ds::Dataset)
 
 	dataframe = createDataFrame(ds)
 	row = jcall(ds,"collectAsList", JavaObject{Symbol("java.util.List")},())
-    for record in JavaCall.iterator(row)
+	showProgress = ProgressUnknown("Rows retrieved:")
+        for record in JavaCall.iterator(row)
 		push!(dataframe, [jvmCast(narrow(record[i])) for i in 1:length(record)])
+		ProgressMeter.next!(showProgress)
 	end
+	ProgressMeter.finish!(showProgress)
 
     return dataframe::DataFrame
 end
@@ -468,19 +471,22 @@ createOrReplaceTempView(sparkDataset, "tempTable")
 The Dataset is a delimited string. To generate columns use the SparkSQL "split" function.
 
 ```
-sqlQuery = sql(sparkSession, "Select split(value, ',' )[0] AS columnName1, split(value, ',' )[1] AS columnName2 from tempTable")
+sqlQuery = sql(sparkSession, "SELECT split(value, ',' )[0] AS columnName1, split(value, ',' )[1] AS columnName2 FROM tempTable")
 ```
 """
 function toSparkDS(session::SparkSession, df::DataFrame)
 
 	rows = ArrayList(())
 	columnRange = 1:size(df)[2]
+	showProgress = ProgressUnknown("Rows sent:")
 	for record in eachrow(df)
 		jcall(rows, "add", jboolean, (JObject,), join(map(i -> string(record[i]),  columnRange), ","))
+		ProgressMeter.next!(showProgress)
 	end
 
  	stringEncoder = jcall( JavaObject{Symbol("org.apache.spark.sql.Encoders")}, "STRING", JavaObject{Symbol("org.apache.spark.sql.Encoder")}, ())
 	ds = jcall(session, "createDataset", Dataset, (JavaObject{Symbol("java.util.List")}, JavaObject{Symbol("org.apache.spark.sql.Encoder")}), rows, stringEncoder)
+	ProgressMeter.finish!(showProgress)
 
 	return ds::Dataset
 
@@ -513,19 +519,22 @@ createOrReplaceTempView(sparkDataset, "tempTable")
 The Dataset is a delimited string. To generate columns use the SparkSQL "split" function.
 
 ```
-sqlQuery = sql(sparkSession, "Select split(value, ',' )[0] AS columnName1, split(value, ',' )[1] AS columnName2 from tempTable")
+sqlQuery = sql(sparkSession, "SELECT split(value, ',' )[0] AS columnName1, split(value, ',' )[1] AS columnName2 FROM tempTable")
 ```
 """
 function toSparkDS(session::SparkSession, df::DataFrame, delimiter::String)
 
 	rows = ArrayList(())
 	columnRange = 1:size(df)[2]
+	showProgress = ProgressUnknown("Rows sent:")
 	for record in eachrow(df)
 		jcall(rows, "add", jboolean, (JObject,), join(map(i -> string(record[i]),  columnRange), delimiter))
+		ProgressMeter.next!(showProgress)
 	end
 
  	stringEncoder = jcall( JavaObject{Symbol("org.apache.spark.sql.Encoders")}, "STRING", JavaObject{Symbol("org.apache.spark.sql.Encoder")}, ())
 	ds = jcall(session, "createDataset", Dataset, (JavaObject{Symbol("java.util.List")}, JavaObject{Symbol("org.apache.spark.sql.Encoder")}), rows, stringEncoder)
+	ProgressMeter.finish!(showProgress)
 
 	return ds::Dataset
 
