@@ -32,6 +32,10 @@ Download Apache Spark 3.1.2 or later and set the environmental variables for Spa
 export SPARK_HOME=/path/to/apache/spark
 export JAVA_HOME=/path/to/java
 ```
+If using OpenJDK 11 on Linux set processReaperUseDefaultStackSize to true:
+```
+export _JAVA_OPTIONS='-Djdk.lang.processReaperUseDefaultStackSize=true'
+```
 
 ### Usage
 Start Julia with `"JULIA_COPY_STACKS=yes"` required for JVM interop:
