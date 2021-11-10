@@ -26,7 +26,7 @@ Enable dashboard and metrics server.
 
 ```
 minikube addons enable metrics-server
-minikune addons enable dashboard
+minikube addons enable dashboard
 ```
 ## 4.) Start MiniKube
 ```
