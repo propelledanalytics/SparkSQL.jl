@@ -1,4 +1,5 @@
 # SparkSQL.jl
+SparkSQL.jl is software that enables developers to use the Julia programming language with the processing power of Apache Spark’s data processing engine. 
 
 # Purpose
 Submits *Structured Query Language* (SQL), *Data Manipulation Language* (DML) and *Data Definition Language* (DDL) statements to Apache Spark.
