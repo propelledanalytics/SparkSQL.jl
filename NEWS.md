@@ -1,8 +1,8 @@
 # SparkSQL.jl release 1.2.0
 New features of this release are:
-- Kubernetes. 
+- Kubernetes support. 
 - Apache Spark 3.2.0 support.
-- JDK 17 Support.
+- JDK 17 support for Spark 3.2.0 on SparkSQL.jl kubernetes.
 
 # SparkSQL.jl release 1.1.0
 New features of this release are:
