@@ -26,6 +26,8 @@ Use ? in the Julia REPL to see help for each function.
 - `toJuliaDF`: move Spark data into a Julia DataFrame. [Help file.](https://propelledanalytics.github.io/SparkSQL.jl/toJuliaDF)
 - `toSparkDS`: move Julia DataFrame data to a Spark Dataset. [Help file.](https://propelledanalytics.github.io/SparkSQL.jl/toSparkDS)
 
+For SparkSQL.jl on kubernetes instructions:
+https://github.com/propelledanalytics/SparkSQL.jl/tree/main/kubernetes#readme
 
 # Quick Start
 ### Install and Setup
