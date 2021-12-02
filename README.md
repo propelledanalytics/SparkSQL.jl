@@ -5,6 +5,7 @@ SparkSQL.jl is software that enables developers to use the Julia programming lan
 Submits *Structured Query Language* (SQL), *Data Manipulation Language* (DML) and *Data Definition Language* (DDL) statements to Apache Spark.
 Has functions to move data from Spark into Julia DataFrames and Julia DataFrame data into Spark.
 
+
 ### Use Case
 Apache Spark is one of the world's most popular open source big data processing engines. Spark supports programming in Java, Scala, Python, SQL, and R.
 This package enables Julia programs to utilize Apache Spark for structured data processing using SQL.
@@ -25,6 +26,8 @@ Use ? in the Julia REPL to see help for each function.
 - `toJuliaDF`: move Spark data into a Julia DataFrame.
 - `toSparkDS`: move Julia DataFrame data to a Spark Dataset.
 
+For SparkSQL.jl on kubernetes instructions see:
+https://github.com/propelledanalytics/SparkSQL.jl/tree/main/kubernetes#readme
 
 # Quick Start
 ### Install and Setup
