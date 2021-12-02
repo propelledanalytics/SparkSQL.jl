@@ -11,7 +11,9 @@ Apache Spark is one of the world's most popular open source big data processing 
 This package enables Julia programs to utilize Apache Spark for structured data processing using SQL.
 
 The design goal of this package is to enable Julia centric programming using Apache Spark with just SQL.  There are only 8 functions. No need to use Java, Scala, Python or R.  Work with Spark data all from within Julia.
-The SparkSQL.jl package uses the Dataset APIs internally giving Julia users the performance benefit of Spark's catalyst optimizer and tungsten engine. The earlier Spark RDD API is not supported.
+The SparkSQL.jl package uses the Dataset APIs internally giving Julia users the performance benefit of Spark's catalyst optimizer and tungsten engine. 
+
+SparkSQL.jl features dynamic horizontal autoscaling to scale compute to match workload requirements. 
 
 This package is for structured and semi-structured data in Data Lakes, Lakehouses (Delta Lake) on premise and in the cloud.
 
