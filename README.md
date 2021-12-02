@@ -38,11 +38,18 @@ If using OpenJDK 11 on Linux set processReaperUseDefaultStackSize to true:
 export _JAVA_OPTIONS='-Djdk.lang.processReaperUseDefaultStackSize=true'
 ```
 
-### Usage
+### Startup
+
 Start Julia with `"JULIA_COPY_STACKS=yes"` required for JVM interop:
 ```
 JULIA_COPY_STACKS=yes julia
 ```
+On MacOS start Julia with "handle-signals=no":
+```
+JULIA_COPY_STACKS=yes julia --handle-signals=no
+```
+### Usage
+
 In Julia include the DataFrames package.  Also include the Dates and Decimals packages if your Spark data contains dates or decimal numbers.
 ```
 using SparkSQL, DataFrames, Dates, Decimals
