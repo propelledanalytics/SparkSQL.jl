@@ -1,19 +1,22 @@
 # SparkSQL.jl
 <https://github.com/propelledanalytics/SparkSQL.jl>
 
+# Purpose
+SparkSQL.jl is software that enables developers to use the Julia programming language with the Apache Spark data processing engine. 
+
 Submits *Structured Query Language* (SQL), *Data Manipulation Language* (DML) and *Data Definition Language* (DDL) statements to Apache Spark.
-Has functions to move data from Spark into Julia DataFrames and Julia DataFrame data into Spark.
+Has functions to move data from Spark into Julia DataFrames and Julia DataFrame data into Spark. 
 
-
+SparkSQL.jl delivers advanced features like dynamic horizontal autoscaling that scale compute nodes to match workload requirements. 
 
 ### Use Case
-Apache Spark is one of the world's most popular open source big data processing engines. Spark supports programming in Java, Scala, Python, SQL, and R.
-This package enables Julia programs to utilize Apache Spark for structured data processing using SQL.
+Apache Spark is one of the world’s most ubiquitous open-source big data processing engines. Spark’s distributed processing power enables it to process very large datasets. Apache Spark runs on many platforms and hardware architectures including those used by large enterprise and government.
 
-The design goal of this package is to enable Julia centric programming using Apache Spark with just SQL.  There are only 8 functions. No need to use Java, Scala, Python or R.  Work with Spark data all from within Julia.
-The SparkSQL.jl package uses the Dataset APIs internally giving Julia users the performance benefit of Spark's catalyst optimizer and tungsten engine. The earlier Spark RDD API is not supported.
+Released in 2012, Julia is a modern programming language ideally suited for data science and machine learning workloads. Expertly designed, Julia is a highly performant language. It sports multiple-dispatch, auto-differentiation and a rich ecosystem of packages.
 
-This package is for structured and semi-structured data in Data Lakes, Lakehouses (Delta Lake) on premise and in the cloud.
+SparkSQL.jl provides the functionality that enables using Apache Spark and Julia together for tabular data. With SparkSQL.jl, Julia is the most advanced software tooling for data science and machine learning work on Spark. 
+
+This package is for structured and semi-structured data in Data Lakes, Lakehouses (Delta Lake, Iceberg) on premise and in the cloud.
 
 # Available Functions
 Use ? in the Julia REPL to see help for each function.
