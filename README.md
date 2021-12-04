@@ -29,7 +29,7 @@ Use ? in the Julia REPL to see help for each function.
 - `toSparkDS`: move Julia DataFrame data to a Spark Dataset.
 
 The SparkSQL.jl compute node autoscaling feature is based on Kubernetes. For SparkSQL.jl on Kubernetes instructions see:
-[SparkSQL.jl kubernetes readme](https://github.com/propelledanalytics/SparkSQL.jl/tree/main/kubernetes#readme)
+[SparkSQL.jl kubernetes readme](kubernetes/README.md)
 
 # Quick Start
 ### Install and Setup
