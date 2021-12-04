@@ -1,32 +1,32 @@
 # SparkSQL.jl
 SparkSQL.jl is software that enables developers to use the Julia programming language with the Apache Spark data processing engine. 
 
-# Purpose
+### About
+SparkSQL.jl provides the functionality that enables using Apache Spark and Julia together for tabular data. With SparkSQL.jl, Julia is the most advanced software tooling for data science and machine learning work on Spark.
+
+Apache Spark is one of the world’s most ubiquitous open-source big data processing engines. Spark’s distributed processing power enables it to process very large datasets. Apache Spark runs on many platforms and hardware architectures including those used by large enterprise and government.
+
+Released in 2012, Julia is a modern programming language ideally suited for data science and machine learning workloads. Expertly designed, Julia is a highly performant language. It sports multiple-dispatch, auto-differentiation and a rich ecosystem of packages.
+
+### Use Case
 Submits *Structured Query Language* (SQL), *Data Manipulation Language* (DML) and *Data Definition Language* (DDL) statements to Apache Spark.
 Has functions to move data from Spark into Julia DataFrames and Julia DataFrame data into Spark. 
 
 SparkSQL.jl delivers advanced features like dynamic horizontal autoscaling that scale compute nodes to match workload requirements. 
 
-### Use Case
-Apache Spark is one of the world’s most ubiquitous open-source big data processing engines. Spark’s distributed processing power enables it to process very large datasets. Apache Spark runs on many platforms and hardware architectures including those used by large enterprise and government.
-
-Released in 2012, Julia is a modern programming language ideally suited for data science and machine learning workloads. Expertly designed, Julia is a highly performant language. It sports multiple-dispatch, auto-differentiation and a rich ecosystem of packages.
-
-SparkSQL.jl provides the functionality that enables using Apache Spark and Julia together for tabular data. With SparkSQL.jl, Julia is the most advanced software tooling for data science and machine learning work on Spark. 
-
-This package is for structured and semi-structured data in Data Lakes, Lakehouses (Delta Lake, Iceberg) on premise and in the cloud.
+This package supports structured and semi-structured data in Data Lakes, Lakehouses (Delta Lake, Iceberg) on premise and in the cloud.
 
 
 # Available Functions
 Use ? in the Julia REPL to see help for each function.
-- `initJVM`: initializes the Java Virtual Machine (JVM) in Julia.
-- `SparkSession`: submits application to Apache Spark cluster with config options.
-- `sql`: function to submit SQL, DDL, and DML statements to Spark.
-- `cache`: function to cache Spark Dataset into memory.
-- `createOrReplaceTempView`: creates temporary view that lasts the duration of the session.
-- `createGlobalTempView`: creates temporary view that lasts the duration of the application.
-- `toJuliaDF`: move Spark data into a Julia DataFrame.
-- `toSparkDS`: move Julia DataFrame data to a Spark Dataset.
+- `initJVM`: initializes the Java Virtual Machine (JVM) in Julia. [Help file.](docs/initJVM.md)
+- `SparkSession`: submits application to Apache Spark cluster with config options. [Help file.](docs/sparksession.md)
+- `sql`: function to submit SQL, DDL, and DML statements to Spark. [Help file.](docs/sql.md)
+- `cache`: function to cache Spark Dataset into memory. [Help file.](docs/cache.md)
+- `createOrReplaceTempView`: creates temporary view that lasts the duration of the session. [Help file.](docs/createOrReplaceTempView.md)
+- `createGlobalTempView`: creates temporary view that lasts the duration of the application. [Help file.](docs/createGlobalTempView.md)
+- `toJuliaDF`: move Spark data into a Julia DataFrame. [Help file.](docs/toJuliaDF.md)
+- `toSparkDS`: move Julia DataFrame data to a Spark Dataset. [Help file.](docs/toSparkDS.md)
 
 The SparkSQL.jl compute node autoscaling feature is based on Kubernetes. For SparkSQL.jl on Kubernetes instructions see:
 [SparkSQL.jl kubernetes readme](kubernetes/README.md)
