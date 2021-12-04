@@ -1,3 +1,7 @@
+# SparkSQL.jl release 1.3.0
+New features of this release are:
+- Julia version 1.7 support. 
+
 # SparkSQL.jl release 1.2.0
 New features of this release are:
 - Kubernetes support. 
