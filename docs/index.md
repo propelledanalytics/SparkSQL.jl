@@ -1,22 +1,23 @@
 # SparkSQL.jl
 <https://github.com/propelledanalytics/SparkSQL.jl>
 
-# Purpose
 SparkSQL.jl is software that enables developers to use the Julia programming language with the Apache Spark data processing engine. 
 
+### About
+SparkSQL.jl provides the functionality that enables using Apache Spark and Julia together for tabular data. With SparkSQL.jl, Julia is the most advanced software tooling for data science and machine learning work on Spark.
+
+Apache Spark is one of the world’s most ubiquitous open-source big data processing engines. Spark’s distributed processing power enables it to process very large datasets. Apache Spark runs on many platforms and hardware architectures including those used by large enterprise and government.
+
+Released in 2012, Julia is a modern programming language ideally suited for data science and machine learning workloads. Expertly designed, Julia is a highly performant language. It sports multiple-dispatch, auto-differentiation and a rich ecosystem of packages.
+
+### Use Case
 Submits *Structured Query Language* (SQL), *Data Manipulation Language* (DML) and *Data Definition Language* (DDL) statements to Apache Spark.
 Has functions to move data from Spark into Julia DataFrames and Julia DataFrame data into Spark. 
 
 SparkSQL.jl delivers advanced features like dynamic horizontal autoscaling that scale compute nodes to match workload requirements. 
 
-### Use Case
-Apache Spark is one of the world’s most ubiquitous open-source big data processing engines. Spark’s distributed processing power enables it to process very large datasets. Apache Spark runs on many platforms and hardware architectures including those used by large enterprise and government.
+This package supports structured and semi-structured data in Data Lakes, Lakehouses (Delta Lake, Iceberg) on premise and in the cloud.
 
-Released in 2012, Julia is a modern programming language ideally suited for data science and machine learning workloads. Expertly designed, Julia is a highly performant language. It sports multiple-dispatch, auto-differentiation and a rich ecosystem of packages.
-
-SparkSQL.jl provides the functionality that enables using Apache Spark and Julia together for tabular data. With SparkSQL.jl, Julia is the most advanced software tooling for data science and machine learning work on Spark. 
-
-This package is for structured and semi-structured data in Data Lakes, Lakehouses (Delta Lake, Iceberg) on premise and in the cloud.
 
 # Available Functions
 Use ? in the Julia REPL to see help for each function.
@@ -29,7 +30,7 @@ Use ? in the Julia REPL to see help for each function.
 - `toJuliaDF`: move Spark data into a Julia DataFrame. [Help file.](https://propelledanalytics.github.io/SparkSQL.jl/toJuliaDF)
 - `toSparkDS`: move Julia DataFrame data to a Spark Dataset. [Help file.](https://propelledanalytics.github.io/SparkSQL.jl/toSparkDS)
 
-For SparkSQL.jl on kubernetes instructions:
+The SparkSQL.jl compute node autoscaling feature is based on Kubernetes. For SparkSQL.jl on Kubernetes instructions see:
 [SparkSQL.jl kubernetes readme](https://github.com/propelledanalytics/SparkSQL.jl/tree/main/kubernetes#readme)
 
 # Quick Start
@@ -44,12 +45,18 @@ If using OpenJDK 11 on Linux set processReaperUseDefaultStackSize to true:
 export _JAVA_OPTIONS='-Djdk.lang.processReaperUseDefaultStackSize=true'
 ```
 
+### Startup
 
-### Usage
 Start Julia with `"JULIA_COPY_STACKS=yes"` required for JVM interop:
 ```
 JULIA_COPY_STACKS=yes julia
 ```
+On MacOS start Julia with "handle-signals=no":
+```
+JULIA_COPY_STACKS=yes julia --handle-signals=no
+```
+### Usage
+
 In Julia include the DataFrames package.  Also include the Dates and Decimals packages if your Spark data contains dates or decimal numbers.
 ```
 using SparkSQL, DataFrames, Dates, Decimals
@@ -78,7 +85,6 @@ The Dataset is a delimited string. To generate columns use the SparkSQL "split" 
 sqlQuery = sql(sparkSession, "Select split(value, ',' )[0] AS columnName1, split(value, ',' )[1] AS columnName2 from tempTable")
 ```
 
-
 # Spark Data Sources
 Supported data-sources include:
 - File formats including: CSV, JSON, arrow, parquet
@@ -102,9 +108,9 @@ stmt = sql(session, "SELECT * FROM PARQUET.`/pathToFile/fileName.parquet`;")
 Delta Lake is an open-source storage layer for Spark. Delta Lake offers:
 
 - ACID transactions on Spark: Serializable isolation levels ensure that readers never see inconsistent data.
-- Scalable metadata handling: Leverages Spark’s distributed processing power to handle all the metadata for petabyte-scale tables with billions of files at ease.
+- Scalable metadata handling: Leverages Spark’s distributed processing power to handle all the metadata for petabyte-scale tables with billions of files.
 
-Example shows create table (DDL), insert (DML) and select (SQL) statements using Delta Lake and SparkSQL:
+Example shows create table (DDL) statements using Delta Lake and SparkSQL:
 ```
 sql(session, "CREATE DATABASE demo;")
 sql(session, "USE demo;")
