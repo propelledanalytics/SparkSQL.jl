@@ -21,17 +21,17 @@ This package supports structured and semi-structured data in Data Lakes, Lakehou
 
 # Available Functions
 Use ? in the Julia REPL to see help for each function.
-- `initJVM`: initializes the Java Virtual Machine (JVM) in Julia. [Help file.](https://propelledanalytics.github.io/SparkSQL.jl/initJVM)
-- `SparkSession`: submits application to Apache Spark cluster with config options. [Help file.](https://propelledanalytics.github.io/SparkSQL.jl/sparksession)
-- `sql`: function to submit SQL, DDL, and DML statements to Spark. [Help file.](https://propelledanalytics.github.io/SparkSQL.jl/sql)
-- `cache`: function to cache Spark Dataset into memory. [Help file.](https://propelledanalytics.github.io/SparkSQL.jl/cache)
-- `createOrReplaceTempView`: creates temporary view that lasts the duration of the session. [Help file.](https://propelledanalytics.github.io/SparkSQL.jl/createOrReplaceTempView)
-- `createGlobalTempView`: creates temporary view that lasts the duration of the application. [Help file.](https://propelledanalytics.github.io/SparkSQL.jl/createGlobalTempView)
-- `toJuliaDF`: move Spark data into a Julia DataFrame. [Help file.](https://propelledanalytics.github.io/SparkSQL.jl/toJuliaDF)
-- `toSparkDS`: move Julia DataFrame data to a Spark Dataset. [Help file.](https://propelledanalytics.github.io/SparkSQL.jl/toSparkDS)
+- `initJVM`: initializes the Java Virtual Machine (JVM) in Julia. [Help file.](initJVM.md)
+- `SparkSession`: submits application to Apache Spark cluster with config options. [Help file.](sparksession.md)
+- `sql`: function to submit SQL, DDL, and DML statements to Spark. [Help file.](sql.md)
+- `cache`: function to cache Spark Dataset into memory. [Help file.](cache.md)
+- `createOrReplaceTempView`: creates temporary view that lasts the duration of the session. [Help file.](createOrReplaceTempView.md)
+- `createGlobalTempView`: creates temporary view that lasts the duration of the application. [Help file.](createGlobalTempView.md)
+- `toJuliaDF`: move Spark data into a Julia DataFrame. [Help file.](toJuliaDF.md)
+- `toSparkDS`: move Julia DataFrame data to a Spark Dataset. [Help file.](toSparkDS.md)
 
 The SparkSQL.jl compute node autoscaling feature is based on Kubernetes. For SparkSQL.jl on Kubernetes instructions see:
-[SparkSQL.jl kubernetes readme](https://github.com/propelledanalytics/SparkSQL.jl/tree/main/kubernetes#readme)
+[SparkSQL.jl kubernetes readme](../kubernetes/README.md)
 
 # Quick Start
 ### Install and Setup
