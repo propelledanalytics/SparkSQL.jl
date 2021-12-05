@@ -1,16 +1,15 @@
 """
-# Purpose
-Submits *Structured Query Language* (SQL), *Data Manipulation Language* (DML) and *Data Definition Language* (DDL) statements to Apache Spark.
-Has functions to move data from Spark into Julia DataFrames and Julia DataFrame data into Spark.
+
+### About
+SparkSQL.jl is software that enables developers to use the Julia programming language with the Apache Spark data processing engine. 
 
 ### Use Case
-Apache Spark is one of the world's most popular open source big data processing engines. Spark supports programming in Java, Scala, Python, SQL, and R.
-This package enables Julia programs to utilize Apache Spark for structured data processing using SQL.
+Submits *Structured Query Language* (SQL), *Data Manipulation Language* (DML) and *Data Definition Language* (DDL) statements to Apache Spark.
+Has functions to move data from Spark into Julia DataFrames and Julia DataFrame data into Spark. 
 
-The design goal of this package is to enable Julia centric programming using Apache Spark with just SQL.  There are only 8 functions. No need to use Java, Scala, Python or R.  Work with Spark data all from within Julia.
-The SparkSQL.jl package uses the Dataset APIs internally giving Julia users the performance benefit of Spark's catalyst optimizer and tungsten engine. The earlier Spark RDD API is not supported.
+SparkSQL.jl delivers advanced features like dynamic horizontal autoscaling that scale compute nodes to match workload requirements. 
 
-This package is for structured and semi-structured data in Data Lakes, Lakehouses (Delta Lake) on premise and in the cloud.
+This package supports structured and semi-structured data in Data Lakes, Lakehouses (Delta Lake, Iceberg) on premise and in the cloud.
 
 # Available Functions
 Use ? to see help for each function.
@@ -23,6 +22,9 @@ Use ? to see help for each function.
 - `toJuliaDF`: move Spark data into a Julia DataFrame.
 - `toSparkDS`: move Julia DataFrame data to a Spark Dataset.
 
+The SparkSQL.jl compute node autoscaling feature is based on Kubernetes. For SparkSQL.jl on Kubernetes instructions see: 
+kubernetes/README.md.
+
 
 # Quick Start
 ### Install and Setup
@@ -31,12 +33,23 @@ Download Apache Spark 3.2.0 or later and set the environmental variables for Spa
 export SPARK_HOME=/path/to/apache/spark
 export JAVA_HOME=/path/to/java
 ```
+If using OpenJDK 11 on Linux set processReaperUseDefaultStackSize to true:
+```
+export _JAVA_OPTIONS='-Djdk.lang.processReaperUseDefaultStackSize=true'
+```
 
-### Usage
+### Startup
+
 Start Julia with `"JULIA_COPY_STACKS=yes"` required for JVM interop:
 ```
 JULIA_COPY_STACKS=yes julia
 ```
+On MacOS start Julia with "handle-signals=no":
+```
+JULIA_COPY_STACKS=yes julia --handle-signals=no
+```
+### Usage
+
 In Julia include the DataFrames package.  Also include the Dates and Decimals packages if your Spark data contains dates or decimal numbers.
 ```
 using SparkSQL, DataFrames, Dates, Decimals
@@ -62,9 +75,8 @@ createOrReplaceTempView(sparkDataset, "tempTable")
 The Dataset is a delimited string. To generate columns use the SparkSQL "split" function.
 
 ```
-sqlQuery = sql(sparkSession, "SELECT split(value, ',' )[0] AS columnName1, split(value, ',' )[1] AS columnName2 FROM tempTable")
+sqlQuery = sql(sparkSession, "Select split(value, ',' )[0] AS columnName1, split(value, ',' )[1] AS columnName2 from tempTable")
 ```
-
 
 # Spark Data Sources
 Supported data-sources include:
@@ -89,9 +101,9 @@ stmt = sql(session, "SELECT * FROM PARQUET.`/pathToFile/fileName.parquet`;")
 Delta Lake is an open-source storage layer for Spark. Delta Lake offers:
 
 - ACID transactions on Spark: Serializable isolation levels ensure that readers never see inconsistent data.
-- Scalable metadata handling: Leverages Spark’s distributed processing power to handle all the metadata for petabyte-scale tables with billions of files at ease.
+- Scalable metadata handling: Leverages Spark’s distributed processing power to handle all the metadata for petabyte-scale tables with billions of files.
 
-Example shows create table (DDL), insert (DML) and select (SQL) statements using Delta Lake and SparkSQL:
+Example shows create table (DDL) statements using Delta Lake and SparkSQL:
 ```
 sql(session, "CREATE DATABASE demo;")
 sql(session, "USE demo;")
