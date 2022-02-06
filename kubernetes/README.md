@@ -27,6 +27,7 @@ Enable dashboard and metrics server.
 ```
 minikube addons enable metrics-server
 minikube addons enable dashboard
+minikube addons enable ingress
 ```
 ## 4.) Start MiniKube
 ```
@@ -40,11 +41,11 @@ eval $(minikube podman-env)
 ```
 Build the Spark podman image. 
 ```
-podman-remote build -t spark-3.2.0 -f Containerfile .
+podman-remote build -t spark-3.2.1 -f Containerfile .
 ```
 Optionally, run the container (type "exit" to leave the container):
 ```
-podman-remote run -it localhost/spark-3.2.0:latest
+podman-remote run -it localhost/spark-3.2.1:latest
 ```
 Use kubectl to provision storage.
 ```
