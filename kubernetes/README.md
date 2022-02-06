@@ -22,7 +22,7 @@ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
 minikube config set driver podman
 ```
-Enable dashboard and metrics server.
+Enable dashboard, metrics server, ingress and storage-provisioner.
 
 ```
 minikube addons enable metrics-server
