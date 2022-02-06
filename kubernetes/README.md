@@ -29,7 +29,6 @@ minikube addons enable metrics-server
 minikube addons enable dashboard
 minikube addons enable ingress
 minikube addons enable storage-provisioner
-
 ```
 ## 4.) Start MiniKube
 ```
