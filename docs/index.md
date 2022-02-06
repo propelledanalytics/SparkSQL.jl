@@ -35,7 +35,7 @@ The SparkSQL.jl compute node autoscaling feature is based on Kubernetes. For Spa
 
 # Quick Start
 ### Install and Setup
-Download Apache Spark 3.2.0 or later and set the environmental variables for Spark and Java home:
+Download Apache Spark 3.2.1 or later and set the environmental variables for Spark and Java home:
 ```
 export SPARK_HOME=/path/to/apache/spark
 export JAVA_HOME=/path/to/java
