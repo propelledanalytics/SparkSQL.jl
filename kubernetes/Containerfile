@@ -2,9 +2,9 @@
 FROM fedora:latest
 
 # Install Java
-ENV JAVA_RELEASE=OpenJDK11U-jdk_x64_linux_hotspot_11.0.13_8
-ENV JAVA_DOWNLOAD=https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jdk_x64_linux_hotspot_11.0.13_8.tar.gz
-ENV JAVA_VERSION=jdk-11.0.13+8
+ENV JAVA_RELEASE=OpenJDK11U-jdk_x64_linux_hotspot_11.0.14_9
+ENV JAVA_DOWNLOAD=https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.14%2B9/OpenJDK11U-jdk_x64_linux_hotspot_11.0.14_9.tar.gz
+ENV JAVA_VERSION=jdk-11.0.14+9
 
 ENV JAVA_BASE=/opt/java
 ENV JAVA_HOME=${JAVA_BASE}/${JAVA_VERSION}
@@ -16,8 +16,8 @@ RUN mkdir -p ${JAVA_BASE}
 RUN tar -xf ${JAVA_RELEASE}.tar.gz -C ${JAVA_BASE}
 
 # Install Spark
-ENV SPARK_RELEASE=spark-3.2.0-bin-hadoop3.2-scala2.13
-ENV SPARK_DOWNLOAD=https://archive.apache.org/dist/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2-scala2.13.tgz
+ENV SPARK_RELEASE=spark-3.2.1-bin-hadoop3.2-scala2.13
+ENV SPARK_DOWNLOAD=https://archive.apache.org/dist/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2-scala2.13.tgz 
 
 ENV SPARK_BASE=/opt/spark
 ENV SPARK_HOME=${SPARK_BASE}/${SPARK_RELEASE}
