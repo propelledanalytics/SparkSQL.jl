@@ -1,3 +1,7 @@
+# SparkSQL.jl release 1.3.2
+This is a maintenance release containing stability fixes. 
+- Updated SparkSQL.jl Kubernetes support for Apache Spark 3.2.1
+
 # SparkSQL.jl release 1.3.1
 This is a maintenance release containing stability fixes. Dependencies updated:
 - Apache Spark 3.2.1
