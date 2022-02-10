@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: spark-master
+  name: spark-master-service
 spec:
   ports:
     - name: webui
