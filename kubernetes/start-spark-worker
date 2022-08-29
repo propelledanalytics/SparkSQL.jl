@@ -1,2 +1,2 @@
 #!/bin/bash
-/opt/spark/spark-3.2.1-bin-hadoop3.2-scala2.13/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077 --webui-port 8081
+/opt/spark/spark-3.3.0-bin-hadoop3-scala2.13/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077 --webui-port 8081
