@@ -1,3 +1,3 @@
 #!/bin/bash
 export IMAGE_NAME=$(uname -n)
-/opt/spark/spark-3.2.1-bin-hadoop3.2-scala2.13/bin/spark-class org.apache.spark.deploy.master.Master -h ${IMAGE_NAME} --port 7077 --webui-port 8080
+/opt/spark/spark-3.3.0-bin-hadoop3-scala2.13/bin/spark-class org.apache.spark.deploy.master.Master -h ${IMAGE_NAME} --port 7077 --webui-port 8080
