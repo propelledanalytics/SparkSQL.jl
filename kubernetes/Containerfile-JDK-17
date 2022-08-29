@@ -2,14 +2,14 @@
 FROM fedora:latest
 
 # Install Java
-ENV JAVA_RELEASE=OpenJDK17U-jdk_x64_linux_hotspot_17.0.2_8
-ENV JAVA_DOWNLOAD=https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.2%2B8/OpenJDK17U-jdk_x64_linux_hotspot_17.0.2_8.tar.gz
-ENV JAVA_VERSION=jdk-17.0.2+8
+ENV JAVA_RELEASE=OpenJDK17U-jdk_x64_linux_hotspot_17.0.4.1_1
+ENV JAVA_DOWNLOAD=https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.4.1%2B1/OpenJDK17U-jdk_aarch64_linux_hotspot_17.0.4.1_1.tar.gz
+ENV JAVA_VERSION=jdk-17.0.4.1+1
 
 ENV JAVA_BASE=/opt/java
 ENV JAVA_HOME=${JAVA_BASE}/${JAVA_VERSION}
 
-# Enable JDK-17 support for Spark 3.2.1.
+# Enable JDK-17 support for Spark 3.3.0.
 ENV _JAVA_OPTIONS='-Djdk.lang.processReaperUseDefaultStackSize=true --add-opens=java.base/sun.util.calendar=ALL-UNNAMED  --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/jdk.internal.misc=ALL-UNNAMED --add-modules=jdk.incubator.foreign'
 
 RUN curl -jkL ${JAVA_DOWNLOAD} --output ${JAVA_RELEASE}.tar.gz
@@ -18,8 +18,8 @@ RUN mkdir -p ${JAVA_BASE}
 RUN tar -xf ${JAVA_RELEASE}.tar.gz -C ${JAVA_BASE}
 
 # Install Spark
-ENV SPARK_RELEASE=spark-3.2.1-bin-hadoop3.2-scala2.13
-ENV SPARK_DOWNLOAD=https://archive.apache.org/dist/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2-scala2.13.tgz 
+ENV SPARK_RELEASE=spark-3.3.0-bin-hadoop3-scala2.13
+ENV SPARK_DOWNLOAD=https://archive.apache.org/dist/spark/spark-3.3.0/spark-3.3.0-bin-hadoop3-scala2.13.tgz 
 
 
 ENV SPARK_BASE=/opt/spark
