@@ -42,11 +42,11 @@ eval $(minikube podman-env)
 ```
 Build the Spark podman image. 
 ```
-podman-remote build -t spark-3.3.0 -f Containerfile .
+podman-remote build -t spark-3.3.1 -f Containerfile .
 ```
 Optionally, run the container (type "exit" to leave the container):
 ```
-podman-remote run -it localhost/spark-3.3.0:latest
+podman-remote run -it localhost/spark-3.3.1:latest
 ```
 Use kubectl to provision storage.
 ```
