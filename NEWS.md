@@ -1,3 +1,10 @@
+# SparkSQL.jl release 1.4.1
+This is a maintenance release. Dependencies updated to:
+- Apache Spark 3.3.1
+- DataFrames 1.4.4
+- JDK 11 jdk-11.0.18+10
+- JDK 17 jdk-17.0.6+10
+
 # SparkSQL.jl release 1.4.0
 New features of this release are:
 - Apache Spark 3.3.0 support.
