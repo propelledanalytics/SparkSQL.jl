@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: spark-worker
-          image: localhost/spark-3.3.0:latest
+          image: localhost/spark-3.3.1:latest
           command: ["/start-spark-worker"]
           ports:
             - containerPort: 8081
